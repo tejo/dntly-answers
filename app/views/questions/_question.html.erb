@@ -1,0 +1,29 @@
+<div class="post" id="<%= dom_id question %>">
+  <div class="wrap-ut pull-left">
+    <div class="userinfo pull-left">
+      <div class="avatar">
+        <img src="<%= question.user.avatar ||  '/site_assets/avatar.jpg' %>" alt="">
+        <div class="status green">&nbsp;</div>
+      </div>
+      <div class="icons">
+        <img src="/site_assets/icon1.jpg" alt=""><img src="/site_assets/icon4.jpg" alt="">
+      </div>
+    </div>
+    <div class="posttext pull-left">
+      <h2><a href="<%= question_path(question)%>"><%= highlight(question.title, query_array) %></a></h2>
+      <p><%= highlight(question.description, query_array) %></p>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="postinfo pull-left">
+    <div class="comments">
+      <div class="commentbg">
+        <%= question.answers.count %>
+        <div class="mark"></div>
+      </div>
+    </div>
+    <div class="views"><i class="fa fa-eye"></i> 1,568</div>
+    <div class="time"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(question.created_at) %></div>
+  </div>
+  <div class="clearfix"></div>
+</div>

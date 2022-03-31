@@ -14,13 +14,13 @@
 4.2. Sidebar
 4.3. Post
 
-#02_topic.html - TOPIC
+#02_topic.html - questions
 5. Breadcrumb
-6. Topic
+6. questions
 7. Quote post
 
 
-#03_new_topic.html - NEW TOPIC
+#03_new_topic.html - NEW questions
 
 #04_new_account.html - NEW ACCOUNT
 
@@ -517,7 +517,7 @@ td.chbox {
 /*-----------------------------------------------------------------*/
 
 
-/* #02_topic.html - TOPIC */
+/* #02_topic.html - questions */
 
 
 /*--- Breadcrumb ---*/
@@ -535,7 +535,7 @@ td.chbox {
 }
 
 
-/*--- Topic ---*/
+/*--- questions ---*/
 
 .topic .userinfo {
     width: 12%;
@@ -707,7 +707,7 @@ a.down:hover {
 /*-----------------------------------------------------------------*/
 
 
-/*--- #03_new_topic.html - NEW TOPIC ---*/
+/*--- #03_new_topic.html - NEW questions ---*/
 
 .newtopic input[type=text],
 .newtopic input[type=password] {
@@ -3151,3 +3151,44 @@ website:   	http://www.themepunch.com
 
 
 /* '' */
+
+.pagination a,
+.pagination span.current,
+.pagination span.gap {
+    float: left;
+    padding: 0 14px;
+    line-height: 38px;
+    text-decoration: none;
+    background-color: white;
+    border: 1px solid #DDD;
+    border-left-width: 0;
+}
+
+.pagination {
+    border-left: 1px solid #ddd;
+    .first {
+        padding: 0;
+        float: none;
+        border: none;
+    }
+    .prev {
+        padding: 0;
+        float: none;
+        border: none;
+    }
+    .page {
+        padding: 0;
+        float: none;
+        border: none;
+    }
+    .next {
+        padding: 0;
+        float: none;
+        border: none;
+    }
+    .last {
+        padding: 0;
+        float: none;
+        border: none;
+    }
+}

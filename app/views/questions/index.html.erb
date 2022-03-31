@@ -1,0 +1,26 @@
+<section class="content">
+  <div class="container">
+    <div class="row">
+      <br>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8" id="questions">
+        <% @questions.each do |question| %>
+          <%= render question %>
+        <% end %>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <%= render 'shared/sidebar' %>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-xs-12">
+        <%= paginate @questions %>
+      </div>
+    </div>
+  </div>
+</section>
