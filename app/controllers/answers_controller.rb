@@ -1,28 +1,29 @@
 # frozen_string_literal: true
 
 class AnswersController < ApplicationController
-  before_action :authenticate_user!, only: %i[new edit update destroy]
+  before_action :authenticate_user!, only: %i[new edit update destroy like]
   before_action :set_answer, only: %i[show edit update destroy]
 
-  # GET /answers or /answers.json
   def index
     @answers = Answer.all
   end
 
-  # GET /answers/1 or /answers/1.json
   def show
   end
 
-  # GET /answers/new
   def new
     @answer = Answer.new
   end
 
-  # GET /answers/1/edit
   def edit
   end
 
-  # POST /answers or /answers.json
+  def like
+    @answer = Answer.find(params[:id])
+    current_user.like(@answer)
+    redirect_to question_url(@answer.question)
+  end
+
   def create
     @answer = Answer.new(answer_params)
     @answer.user = current_user
@@ -44,7 +45,6 @@ class AnswersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /answers/1 or /answers/1.json
   def update
     respond_to do |format|
       if @answer.update(answer_params)
@@ -62,7 +62,6 @@ class AnswersController < ApplicationController
     end
   end
 
-  # DELETE /answers/1 or /answers/1.json
   def destroy
     @answer.destroy
 

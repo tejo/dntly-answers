@@ -12,4 +12,17 @@ class User < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :likeables, dependent: :destroy
+  has_many :liked_answers, through: :likeables, source: :answer
+
+  def like(answer)
+    if liked_answers.include?(answer)
+      liked_answers.destroy(answer)
+    else
+      liked_answers << answer
+    end
+  end
+
+  def liked?(answer)
+    liked_answers.include?(answer)
+  end
 end
