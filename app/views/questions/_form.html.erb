@@ -1,32 +1,47 @@
-<%= form_with(model: question) do |form| %>
-  <% if question.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
-
-      <ul>
-        <% question.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="post">
+  <div class="container">
+    <div class="row">
+      <% if question.errors.any? %>
+        <div class="col-lg-8 col-md-8" style='margin-left: 130px;'>
+          <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+          <ul>
+            <% question.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="col-lg-4 col-md-4">
+      </div>
+    </div>
+  </div>
+  <%= form_with(model: question, class: "form newtopic") do |form| %>
+    <div class="topwrap">
+      <div class="userinfo pull-left">
+        <div class="avatar">
+          <img src="/site_assets/avatar4.jpg" alt="">
+          <div class="status red">&nbsp;</div>
+        </div>
+        <div class="icons">
+          <img src="/site_assets/icon3.jpg" alt=""><img src="/site_assets/icon4.jpg" alt=""><img src="/site_assets/icon5.jpg" alt=""><img src="/site_assets/icon6.jpg" alt="">
+        </div>
+      </div>
+      <div class="posttext pull-left">
+        <div>
+          <%= form.text_field :title , placeholder: "Enter Question Title", class: "form-control"%>
+        </div>
+        <div>
+          <%= form.text_area :description, placeholder: "Description", class: "form-control" %>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="postinfobot">
+      <div class="pull-right postreply">
+        <div class="pull-left"><button type="submit" class="btn btn-primary">Create Question</button></div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

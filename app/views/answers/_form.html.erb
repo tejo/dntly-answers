@@ -1,32 +1,30 @@
-<%= form_with(model: answer) do |form| %>
-  <% if answer.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
-
-      <ul>
-        <% answer.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="post">
+  <%= form_with(model: answer) do |form| %>
+    <div class="topwrap">
+      <div class="userinfo pull-left">
+        <div class="avatar">
+          <img src="<%= current_user.avatar ||  '/site_assets/avatar.jpg' %>" alt="">
+          <div class="status red">&nbsp;</div>
+        </div>
+        <div class="icons">
+          <img src="/site_assets/icon3.jpg" alt=""><img src="/site_assets/icon4.jpg" alt=""><img src="/site_assets/icon5.jpg" alt=""><img src="/site_assets/icon6.jpg" alt="">
+        </div>
+      </div>
+      <div class="posttext pull-left">
+        <div class="textwraper">
+          <div class="postreply">Post an answer</div>
+          <%= form.text_area :description , placeholder: "Type your message here"%>
+          <%= form.hidden_field :question_id %>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="postinfobot">
+      <div class="pull-right postreply">
+        <div class="pull-left"><button type="submit" class="btn btn-primary">Post Reply</button></div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :question_id, style: "display: block" %>
-    <%= form.text_field :question_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

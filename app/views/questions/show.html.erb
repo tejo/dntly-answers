@@ -1,10 +1,29 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @question %>
-
-<div>
-  <%= link_to "Edit this question", edit_question_path(@question) %> |
-  <%= link_to "Back to questions", questions_path %>
-
-  <%= button_to "Destroy this question", @question, method: :delete %>
-</div>
+<section class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 breadcrumbf">
+        <a href="/">Questions</a> <span class="diviver">&gt;</span> <a href="<%= question_path(@question)%>"><%=@question.title%></a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8">
+        <!-- POST -->
+        <%= render @question %>
+        <!-- POST -->
+        <!-- POST -->
+        <% @question.answers.each do |answer| %>
+          <%= render answer %>
+        <% end %>
+        <% if current_user %>
+          <%= render "answers/form", answer: Answer.new(question: @question, user: current_user) %>
+        <%end%>
+        <!-- POST -->
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <%= render 'shared/sidebar' %>
+      </div>
+    </div>
+  </div>
+</section>

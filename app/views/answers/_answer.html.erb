@@ -1,17 +1,24 @@
-<div id="<%= dom_id answer %>">
-  <p>
-    <strong>Description:</strong>
-    <%= answer.description %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= answer.user_id %>
-  </p>
-
-  <p>
-    <strong>Question:</strong>
-    <%= answer.question_id %>
-  </p>
-
+<div class="post" id="<%= dom_id answer %>">
+  <div class="topwrap">
+    <div class="userinfo pull-left">
+      <div class="avatar">
+        <img src="<%= answer.user.avatar || '/site_assets/avatar2.jpg' %>" alt="">
+        <div class="status red">&nbsp;</div>
+      </div>
+      <div class="icons">
+        <img src="/site_assets/icon3.jpg" alt=""><img src="/site_assets/icon4.jpg" alt=""><img src="/site_assets/icon5.jpg" alt=""><img src="/site_assets/icon6.jpg" alt="">
+      </div>
+    </div>
+    <div class="posttext pull-left">
+      <p><%= answer.description %></p>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="postinfobot">
+    <div class="likeblock pull-left">
+      <a href="/" class="up"><i class="fa fa-thumbs-o-up"></i>10</a>
+      <a href="/" class="down"><i class="fa fa-thumbs-o-down"></i>1</a>
+    </div>
+    <div class="clearfix"></div>
+  </div>
 </div>

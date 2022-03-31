@@ -7,7 +7,9 @@ class QuestionsController < ApplicationController
   # GET /questions or /questions.json
   def index
     @questions =
-      Question.search(params[:q]).includes(:answers, :user).page(params[:page])
+      Question.search(params[:q]).includes(:answers, :user).order(
+        created_at: :desc
+      ).page(params[:page])
   end
 
   # GET /questions/1 or /questions/1.json
@@ -26,6 +28,7 @@ class QuestionsController < ApplicationController
   # POST /questions or /questions.json
   def create
     @question = Question.new(question_params)
+    @question.user = current_user
 
     respond_to do |format|
       if @question.save
@@ -63,7 +66,7 @@ class QuestionsController < ApplicationController
 
   # DELETE /questions/1 or /questions/1.json
   def destroy
-    @question.destroy
+    @question = current_user.questions.find(params[:id])
 
     respond_to do |format|
       format.html do
@@ -78,15 +81,16 @@ class QuestionsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_question
-    @question = Question.find(params[:id])
+    @question = Question.includes(:answers, :user).find(params[:id])
   end
 
   def set_current_user_questions
-    @current_user_questions = Question.where(user: current_user)
+    @current_user_questions =
+      Question.where(user: current_user).order(created_at: :desc)
   end
 
   # Only allow a list of trusted parameters through.
   def question_params
-    params.require(:question).permit(:title, :description, :user_id)
+    params.require(:question).permit(:title, :description)
   end
 end

@@ -25,5 +25,15 @@
     <div class="views"><i class="fa fa-eye"></i> 1,568</div>
     <div class="time"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(question.created_at) %></div>
   </div>
+  <%if current_user && question.user == current_user%>
+    <div class="postinfobot">
+      <div class="posted pull-left"><i class="fa fa-clock-o"></i> Posted on : <%= h(question.created_at) %></div>
+      <div class="next pull-right">
+        <a href="<%= edit_question_path(question) %>"><i class="fa fa-edit"></i></a>
+        <a data-turbo-method="delete" href="<%= question_path(question) %>"><i class="fa fa-trash-o"></i></a>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  <%end%>
   <div class="clearfix"></div>
 </div>

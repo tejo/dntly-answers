@@ -1,9 +1,17 @@
-<h1>New question</h1>
-
-<%= render "form", question: @question %>
-
-<br>
-
-<div>
-  <%= link_to "Back to questions", questions_path %>
-</div>
+<section class="content">
+  <div class="container">
+    <div class="row">
+      <br>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8">
+        <%= render "form", question: @question %>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <%= render 'shared/sidebar' %>
+      </div>
+    </div>
+  </div>
+</section>
