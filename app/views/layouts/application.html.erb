@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dentally</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+  <link rel="stylesheet" href="/site_assets/font-awesome.min.css">
+  <body>
+    <div class="container-fluid">
+      <!-- Slider -->
+      <div class="tp-banner-container" style="overflow: visible;">
+        <div class="tp-banner revslider-initialised tp-simpleresponsive" style="max-height: 278px; height: 278px;" id="revslider-340">
+          <ul style="display: block; overflow: hidden; width: 100%; height: 100%; max-height: none;">
+            <!-- SLIDE  -->
+            <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" style="width: 100%; height: 100%; overflow: hidden; visibility: visible; left: 0px; top: 0px; z-index: 20; opacity: 1;">
+              <!-- MAIN IMAGE -->
+              <div class="slotholder" style="width:100%;height:100%;">
+                <div style="background-color: rgba(0, 0, 0, 0);
+    background-repeat: no-repeat;
+    background-image: url(/site_assets/slide.jpg);
+    background-size: cover;
+    background-position: left top;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    position: relative;"></div>
+              </div>
+              <!-- LAYERS -->
+            </li>
+          </ul>
+          <div class="tp-loader" style="display: none;"></div>
+          <div class="tp-bannertimer" style="visibility: hidden; width: 0%;"></div>
+        </div>
+      </div>
+      <!-- //Slider -->
+      <div class="headernav">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-1 col-xs-3 col-sm-2 col-md-2 logo ">
+              <a href="http://forum.azyrusthemes.com/index.html"><img src="/site_assets/logo.jpg" alt=""></a>
+            </div>
+            <div class="col-lg-3 col-xs-9 col-sm-5 col-md-3 selecttopic">
+              <div class="dropdown">
+                <a data-toggle="dropdown" href="/">Borderlands 2</a> <b class="caret"></b>
+                <ul class="dropdown-menu" role="menu">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="/">Borderlands 1</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-2" href="/">Borderlands 2</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-3" href="/">Borderlands 3</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-4 search hidden-xs hidden-sm col-md-3">
+              <div class="wrap">
+                <form action="/" method="post" class="form">
+                  <div class="pull-left txt"><input type="text" class="form-control" placeholder="Search Topics"></div>
+                  <div class="pull-right"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></div>
+                  <div class="clearfix"></div>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xs-12 col-sm-5 col-md-4 avt">
+              <div class="stnt pull-left">
+                <form action="http://forum.azyrusthemes.com/03_new_topic.html" method="post" class="form">
+                  <button class="btn btn-primary">Start New Topic</button>
+                </form>
+              </div>
+              <div class="env pull-left"><i class="fa fa-envelope"></i></div>
+              <div class="avatar pull-left dropdown">
+                <a data-toggle="dropdown" href="/"><img src="/site_assets/avatar.jpg" alt=""></a> <b class="caret"></b>
+                <div class="status green">&nbsp;</div>
+                <ul class="dropdown-menu" role="menu">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="/">My Profile</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-2" href="/">Inbox</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-3" href="/">Log Out</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-4" href="http://forum.azyrusthemes.com/04_new_account.html">Create account</a></li>
+                </ul>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= yield %>
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-1 col-xs-3 col-sm-2 logo ">
+              <a href="/"><img src="/site_assets/logo.jpg" alt=""></a>
+            </div>
+            <div class="col-lg-8 col-xs-9 col-sm-5 ">Copyrights 2014, websitename.com</div>
+            <div class="col-lg-3 col-xs-12 col-sm-5 sociconcent">
+              <ul class="socialicons">
+                <li><a href="/"><i class="fa fa-facebook-square"></i></a></li>
+                <li><a href="/"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="/"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="/"><i class="fa fa-dribbble"></i></a></li>
+                <li><a href="/"><i class="fa fa-cloud"></i></a></li>
+                <li><a href="/"><i class="fa fa-rss"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
