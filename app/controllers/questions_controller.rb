@@ -2,6 +2,7 @@
 
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
+  before_action :set_current_user_questions
 
   # GET /questions or /questions.json
   def index
@@ -10,7 +11,8 @@ class QuestionsController < ApplicationController
   end
 
   # GET /questions/1 or /questions/1.json
-  def show; end
+  def show
+  end
 
   # GET /questions/new
   def new
@@ -18,7 +20,8 @@ class QuestionsController < ApplicationController
   end
 
   # GET /questions/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /questions or /questions.json
   def create
@@ -28,7 +31,7 @@ class QuestionsController < ApplicationController
       if @question.save
         format.html do
           redirect_to question_url(@question),
-                      notice: 'Question was successfully created.'
+                      notice: "Question was successfully created."
         end
         format.json { render :show, status: :created, location: @question }
       else
@@ -46,7 +49,7 @@ class QuestionsController < ApplicationController
       if @question.update(question_params)
         format.html do
           redirect_to question_url(@question),
-                      notice: 'Question was successfully updated.'
+                      notice: "Question was successfully updated."
         end
         format.json { render :show, status: :ok, location: @question }
       else
@@ -65,7 +68,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html do
         redirect_to questions_url,
-                    notice: 'Question was successfully destroyed.'
+                    notice: "Question was successfully destroyed."
       end
       format.json { head :no_content }
     end
@@ -76,6 +79,10 @@ class QuestionsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_question
     @question = Question.find(params[:id])
+  end
+
+  def set_current_user_questions
+    @current_user_questions = Question.where(user: current_user)
   end
 
   # Only allow a list of trusted parameters through.

@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
 user1 = User.new
-user1.email = 'test@example.com'
-user1.password = 'admin1'
-user1.password_confirmation = 'admin1'
-user1.avatar = '/site_assets/avatar.jpg'
+user1.email = "test@example.com"
+user1.password = "admin1"
+user1.password_confirmation = "admin1"
+user1.avatar = "/site_assets/avatar.jpg"
 user1.save!
 
 user2 = User.new
-user2.email = 'test@example2.com'
-user2.password = 'admin1'
-user2.password_confirmation = 'admin1'
-user2.avatar = '/site_assets/avatar2.jpg'
+user2.email = "test@example2.com"
+user2.password = "admin1"
+user2.password_confirmation = "admin1"
+user2.avatar = "/site_assets/avatar2.jpg"
 user2.save!
 
 user3 = User.new
-user3.email = 'admin@admin.com'
-user3.password = 'admin1'
-user3.password_confirmation = 'admin1'
-user3.avatar = '/site_assets/avatar3.jpg'
+user3.email = "admin@admin.com"
+user3.password = "admin1"
+user3.password_confirmation = "admin1"
+user3.avatar = "/site_assets/avatar3.jpg"
 user3.save!
 
 5.times do
