@@ -1,31 +1,28 @@
 # frozen_string_literal: true
 
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new edit update destroy]
+
   before_action :set_question, only: %i[show edit update destroy]
   before_action :set_current_user_questions
 
-  # GET /questions or /questions.json
   def index
     @questions =
-      Question.search(params[:q]).includes(:answers, :user).order(
-        created_at: :desc
-      ).page(params[:page])
+      Question.search(params[:q]).includes(:user).order(created_at: :desc).page(
+        params[:page]
+      )
   end
 
-  # GET /questions/1 or /questions/1.json
   def show
   end
 
-  # GET /questions/new
   def new
     @question = Question.new
   end
 
-  # GET /questions/1/edit
   def edit
   end
 
-  # POST /questions or /questions.json
   def create
     @question = Question.new(question_params)
     @question.user = current_user
@@ -46,8 +43,9 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /questions/1 or /questions/1.json
   def update
+    @question = current_user.questions.find(params[:id])
+
     respond_to do |format|
       if @question.update(question_params)
         format.html do
@@ -67,6 +65,7 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1 or /questions/1.json
   def destroy
     @question = current_user.questions.find(params[:id])
+    @question.destroy
 
     respond_to do |format|
       format.html do

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Question < ApplicationRecord
-  has_many :answers, dependent: :destroy
+  has_many :answers, dependent: :destroy, counter_cache: true
   belongs_to :user
 
   validates :title, presence: true
